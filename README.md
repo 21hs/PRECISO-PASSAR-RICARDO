@@ -1,44 +1,26 @@
-Rastreador de Encomendas
+# Rastreador de Encomendas
+
 Este é um projeto simples de rastreamento de encomendas implementado em Java. O projeto utiliza MySQL como banco de dados para armazenar informações sobre usuários, encomendas e status.
 
-Estrutura do Projeto
-less
-Copy code
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── entities/                           // Pacote para as entidades
-│   │   │   │   ├── Usuario.java                    // Classe para a entidade Usuário
-│   │   │   │   ├── Encomenda.java                  // Classe para a entidade Encomenda
-│   │   │   │   └── Status.java                     // Classe para a entidade Status
-│   │   │   ├── interfaces/                         // Pacote para as interfaces dos serviços
-│   │   │   │   ├── UsuarioService.java             // Interface para serviços de Usuário
-│   │   │   │   ├── EncomendaService.java           // Interface para serviços de Encomenda
-│   │   │   │   └── StatusService.java              // Interface para serviços de Status
-│   │   │   ├── services/                           // Pacote para as implementações dos serviços
-│   │   │   │   ├── UsuarioServiceImpl.java         // Implementação do serviço de Usuário
-│   │   │   │   ├── EncomendaServiceImpl.java       // Implementação do serviço de Encomenda
-│   │   │   │   └── StatusServiceImpl.java          // Implementação do serviço de Status
-│   │   │   ├── database/                           // Pacote para a conexão com o banco de dados
-│   │   │   │   └── DatabaseConnection.java         // Classe para gerenciar a conexão com o MySQL
-│   │   │   └── Main.java                           // Classe principal
-│   │   └── resources/                              // Recursos adicionais (opcional)
-│   └── test/                                       // Pacote para testes (opcional)
-├── pom.xml (ou build.gradle)                       // Configuração do projeto
-└── README.md                                       // Documentação do projeto
-Pré-requisitos
-Java 8 ou superior
-Maven 3.x
-MySQL Server
-Configuração
-1. Clone o repositório ou baixe os arquivos do projeto.
-2. Configure o banco de dados:
-Crie um banco de dados no MySQL chamado nome_do_banco (substitua pelo nome desejado).
 
-Execute os seguintes comandos SQL para criar as tabelas necessárias:
+## Pré-requisitos
 
-sql
-Copy code
+- Java 8 ou superior
+- Maven 3.x
+- MySQL Server
+
+## Configuração
+
+### 1. Clone o Repositório ou Baixe os Arquivos
+
+Clone ou baixe os arquivos do projeto para sua máquina local.
+
+### 2. Configuração do Banco de Dados
+
+- Crie um banco de dados no MySQL chamado `nome_do_banco` (substitua pelo nome desejado).
+- Execute os seguintes comandos SQL para criar as tabelas necessárias:
+
+```sql
 CREATE TABLE Usuario (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100),
@@ -61,33 +43,49 @@ CREATE TABLE Status (
     data_status DATE,
     FOREIGN KEY (id_encomenda) REFERENCES Encomenda(id_encomenda)
 );
-3. Configurar as credenciais do banco de dados:
+```
+Configuração das Credenciais do Banco de Dados
 Abra o arquivo DatabaseConnection.java e altere as variáveis URL, USER e PASSWORD com as informações de acesso ao seu banco de dados MySQL.
 
-java
-Copy code
+```
 private static final String URL = "jdbc:mysql://localhost:3306/nome_do_banco"; // Substitua com seu nome de banco
 private static final String USER = "usuario"; // Substitua com seu nome de usuário
 private static final String PASSWORD = "senha"; // Substitua com sua senha
+```
 Executando o Projeto
-Navegue até o diretório do projeto.
-Compile e instale o projeto com Maven:
-bash
-Copy code
+1. Compilação e Instalação
+Navegue até o diretório do projeto e execute o comando abaixo para compilar e instalar o projeto:
+```
 mvn clean install
-Execute o projeto com o comando abaixo, substituindo "main.Main" pela classe principal do seu projeto:
-bash
-Copy code
+```
+ Execução do Projeto
+Após a instalação, execute o projeto com o comando abaixo:
+```
 mvn exec:java -Dexec.mainClass="main.Main"
-Testes
-Para executar testes automatizados, você pode usar o Maven com o comando abaixo:
+```
+Certifique-se de substituir "main.Main" pela classe principal do seu projeto, caso necessário.
 
-bash
-Copy code
+Testes
+Para executar testes automatizados, utilize o Maven com o seguinte comando:
+```
 mvn test
-Contribuições
+```
+
+## Contribuições
 Sinta-se à vontade para enviar pull requests ou relatar problemas. Para contribuir, siga estas etapas:
 
 Faça um fork deste repositório.
 Crie uma nova branch para suas alterações.
 Envie um pull request com uma descrição detalhada das mudanças realizadas.
+
+
+### Como Usar o Documento
+
+1. **Clone ou baixe o projeto**: Copie e cole as instruções do código SQL e configurações do banco de dados diretamente na sua ferramenta de gerenciamento de banco de dados.
+2. **Compilação e execução**: Siga as instruções de compilação com o Maven para instalar e rodar o projeto.
+3. **Contribuição**: O projeto está aberto para contribuições. Você pode fazer um fork, realizar alterações e submeter um pull request.
+
+Esse arquivo `README.md` serve como guia completo para configuração, execução e contribuição ao projeto.
+
+
+
